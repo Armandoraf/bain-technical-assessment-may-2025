@@ -1,0 +1,60 @@
+name: CI
+on: [push, pull_request]
+
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          path: backend
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          cd backend
+          pip install poetry
+          poetry install
+
+      - name: Lint & format-check
+        run: |
+          cd backend
+          poetry run ruff .
+          poetry run black --check .
+
+      - name: Run Tests
+        run: |
+          cd backend
+          poetry run pytest --maxfail=1 --disable-warnings -q
+
+  frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          path: frontend
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: |
+          cd frontend
+          npm ci
+
+      - name: Lint & format-check
+        run: |
+          cd frontend
+          npm run lint
+          npm run fmt-check
+
+      - name: Run Tests
+        run: |
+          cd frontend
+          npm run test -- --watchAll=false
