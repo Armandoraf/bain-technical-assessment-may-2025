@@ -6,12 +6,14 @@ import { Button } from '../ui/button';
 import { Key } from 'lucide-react';
 import { useState } from 'react';
 import { SearchStatusProvider } from '~/contexts/search-status-context';
+import { useClearQueryOnReload } from '~/hooks/useClearQueryOnReload';
 
 export default function BaseLayout({
   children
 }: {
   children: React.ReactNode;
 }) {
+  useClearQueryOnReload();
   const [apiKey, setApiKey] = useState<string>(() => {
     if (typeof window !== 'undefined') {
       return localStorage.getItem('openai-api-key') ?? '';
