@@ -27,7 +27,8 @@ recommender = RecommenderService(yelp, cache, default_openai)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://localhost:3000"],
+    allow_origins=["http://localhost:5173",
+                   "http://localhost:3000", "http://192.168.97.3:3000"],
     allow_methods=["*"],
     allow_headers=["*"],
 )
