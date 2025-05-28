@@ -88,10 +88,12 @@ export default function Home() {
           </div>
           {loadingRecommendations ? (
             <>
-              <div className="grid grid-cols-4 gap-6">{skeletons}</div>
+              <div className="grid sm:grid-cols-1 md:grid-cols-4 gap-6">
+                {skeletons}
+              </div>
             </>
           ) : (
-            <div className="grid grid-cols-4 gap-6">
+            <div className="grid sm:grid-cols-1 md:grid-cols-4 gap-6">
               {recommended.map(r => (
                 <RestaurantCard key={r.id} restaurant={r} />
               ))}
@@ -108,9 +110,11 @@ export default function Home() {
           </span>
         </div>
         {loadingPartner && partnerApproved.length === 0 ? (
-          <div className="grid grid-cols-4 gap-6">{skeletons}</div>
+          <div className="grid sm:grid-cols-1 md:grid-cols-4 gap-6">
+            {skeletons}
+          </div>
         ) : (
-          <div className="grid grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-1 md:grid-cols-4 gap-6">
             {partnerApproved.map(r => (
               <RestaurantCard key={r.id} restaurant={r} />
             ))}
@@ -121,9 +125,11 @@ export default function Home() {
       <section>
         <h2 className="text-xl mb-3">Near you in {city}</h2>
         {loadingNear && nearYou.length === 0 ? (
-          <div className="grid grid-cols-4 gap-6">{skeletons}</div>
+          <div className="grid sm:grid-cols-1 md:grid-cols-4 gap-6">
+            {skeletons}
+          </div>
         ) : (
-          <div className="grid grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-1 md:grid-cols-4 gap-6">
             {nearYou.map(r => (
               <RestaurantCard key={r.id} restaurant={r} />
             ))}
