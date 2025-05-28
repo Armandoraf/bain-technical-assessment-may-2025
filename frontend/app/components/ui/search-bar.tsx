@@ -71,10 +71,10 @@ export function SearchBar() {
   };
 
   const EXAMPLE_QUERIES = [
-    'I need a quiet, high-end spot near Salesforce Tower for a client lunch with a fintech CEO',
-    'What are some vibrant Midtown Manhattan restaurants that can host a team dinner with strong vegetarian options?',
-    'Best private-room sushi venues in Tokyo for a big group of 18 consultants next Tuesday',
-    'I need a lakefront restaurant in Chicago for a post-project celebration tonight'
+    'I need a quiet, high-end spot for a client lunch with a fintech CEO',
+    'What are some vibrant downtown restaurants that can host a team dinner with strong vegetarian options?',
+    'Best private-room sushi venues for a big group of 18 consultants next Tuesday',
+    'I need a lakefront restaurant for a post-project celebration tonight'
   ];
 
   const hasQueryParam = Boolean(searchParams.get('query'));
